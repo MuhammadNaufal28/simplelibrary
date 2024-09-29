@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <!-- Tree View untuk Overdue -->
+        <record id="view_os_rentbook_overdue_tree" model="ir.ui.view">
+            <field name="name">os.rentbook.overdue.tree</field>
+            <field name="model">os.rentbook.overdue</field>
+            <field name="arch" type="xml">
+                <tree string="Overdue Loans">
+                    <field name="loan_id" string="Loan"/>
+                    <field name="overdue_days" string="Overdue Days"/>
+                    <field name="fine_amount" string="Fine Amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View untuk Overdue -->
+        <record id="view_os_rentbook_overdue_form" model="ir.ui.view">
+            <field name="name">os.rentbook.overdue.form</field>
+            <field name="model">os.rentbook.overdue</field>
+            <field name="arch" type="xml">
+                <form string="Overdue Details">
+                    <sheet>
+                        <group>
+                            <field name="loan_id" string="Loan" required="1"/>
+                            <field name="overdue_days" string="Overdue Days" required="1"/>
+                            <field name="fine_amount" string="Fine Amount" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk Overdue -->
+        <record id="action_os_rentbook_overdue" model="ir.actions.act_window">
+            <field name="name">Overdue Loans</field>
+            <field name="res_model">os.rentbook.overdue</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_os_rentbook_overdue_tree"/>
+        </record>
+
+        <!-- Menu Item untuk Overdue -->
+        <menuitem id="os_rentbook_menu_overdue" name="Overdue Loans" parent="os_rentbook_menu_categ" action="action_os_rentbook_overdue"/>
+    </data>
+</odoo>

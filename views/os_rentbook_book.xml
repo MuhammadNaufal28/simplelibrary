@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+        <!-- Form View untuk Buku -->
+        <record id="view_os_rentbook_book_form" model="ir.ui.view">
+            <field name="name">os.rentbook.book.form</field>
+            <field name="model">os.rentbook.book</field>
+            <field name="arch" type="xml">
+                <form string="Book">
+                    <sheet>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar" options="{'preview_image': 'image'}"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="author"/>
+                                <field name="isbn"/>
+                                <field name="genre_id"/>
+                                <field name="publisher"/>
+                            </group>
+                            <group>
+                                <field name="publication_date"/>
+                                <field name="number_of_copies"/>
+                                <field name="available" readonly="1"/>
+                                <field name="late_amount_charge"/>
+                                <field name="image"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View untuk Buku -->
+        <record id="view_os_rentbook_book_tree" model="ir.ui.view">
+            <field name="name">os.rentbook.book.tree</field>
+            <field name="model">os.rentbook.book</field>
+            <field name="arch" type="xml">
+                <tree string="Books">
+                    <field name="name"/>
+                    <field name="author"/>
+                    <field name="isbn"/>
+                    <field name="available"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Kanban View for Books -->
+        <record id="view_os_rentbook_book_kanban" model="ir.ui.view">
+            <field name="name">os.rentbook.book.kanban</field>
+            <field name="model">os.rentbook.book</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="o_kanban_record">
+                                <div class="o_kanban_image">
+                                    <field name="image" widget='image'/>
+                                </div>
+                                <div class="o_kanban_details">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                    <div>
+                                        <field name="author"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <!-- Action untuk Buku -->
+        <record id="action_os_rentbook_book" model="ir.actions.act_window">
+            <field name="name">Books</field>
+            <field name="res_model">os.rentbook.book</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="view_os_rentbook_book_tree"/>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="os_rentbook_menu_book" name="Books" parent="os_rentbook_book_menu_categ" action="action_os_rentbook_book"/>
+    </data>
+</odoo>

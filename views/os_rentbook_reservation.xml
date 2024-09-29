@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <!-- Tree View untuk Reservation -->
+        <record id="view_os_rentbook_reservation_tree" model="ir.ui.view">
+            <field name="name">os.rentbook.reservation.tree</field>
+            <field name="model">os.rentbook.reservation</field>
+            <field name="arch" type="xml">
+                <tree string="Reservations">
+                    <field name="member_id" string="Member"/>
+                    <field name="book_id" string="Book"/>
+                    <field name="reservation_date" string="Reservation Date"/>
+                    <field name="status" string="Status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View untuk Reservation -->
+        <record id="view_os_rentbook_reservation_form" model="ir.ui.view">
+            <field name="name">os.rentbook.reservation.form</field>
+            <field name="model">os.rentbook.reservation</field>
+            <field name="arch" type="xml">
+                <form string="Reservation">
+                    <sheet>
+                        <group>
+                            <field name="member_id" string="Member" required="1"/>
+                            <field name="book_id" string="Book" required="1"/>
+                            <field name="reservation_date" string="Reservation Date"/>
+                            <field name="status" string="Status"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk Reservation -->
+        <record id="action_os_rentbook_reservation" model="ir.actions.act_window">
+            <field name="name">Reservations</field>
+            <field name="res_model">os.rentbook.reservation</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_os_rentbook_reservation_tree"/>
+        </record>
+
+        <!-- Menu Item untuk Reservation
+        <menuitem id="os_rentbook_menu_reservation" name="Reservations" parent="os_rentbook_menu_categ" action="action_os_rentbook_reservation"/> -->
+    </data>
+</odoo>

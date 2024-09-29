@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <!-- Tree View untuk Member -->
+        <record id="view_os_rentbook_member_tree" model="ir.ui.view">
+            <field name="name">os.rentbook.member.tree</field>
+            <field name="model">os.rentbook.member</field>
+            <field name="arch" type="xml">
+                <tree string="Members">
+                    <field name="name" string="Name"/>
+                    <field name="membership_id" string="Membership ID"/>
+                    <field name="email" string="Email"/>
+                    <field name="phone_number" string="Phone Number"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View untuk Member -->
+        <record id="view_os_rentbook_member_form" model="ir.ui.view">
+            <field name="name">os.rentbook.member.form</field>
+            <field name="model">os.rentbook.member</field>
+            <field name="arch" type="xml">
+                <form string="Member">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="membership_id" string="Membership ID"/>
+                            <field name="email" string="Email"/>
+                            <field name="phone_number" string="Phone Number"/>
+                            <field name="address" string="Address"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk Member -->
+        <record id="action_os_rentbook_member" model="ir.actions.act_window">
+            <field name="name">Members</field>
+            <field name="res_model">os.rentbook.member</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_os_rentbook_member_tree"/>
+        </record>
+
+        <!-- Menu Item untuk Member -->
+        <menuitem id="os_rentbook_menu_member" name="Members" parent="os_rentbook_menu_categ" action="action_os_rentbook_member"/>
+    </data>
+</odoo>

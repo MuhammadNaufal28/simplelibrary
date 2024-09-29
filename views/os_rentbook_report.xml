@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="os_rentbook_loan_bar_chart" model="ir.ui.view">
+            <field name="name">os.rentbook.loan.bar.chart</field>
+            <field name="model">os.rentbook.loan</field>
+            <field name="arch" type="xml">
+                <graph string="Dashboard">
+                    <!-- Define your bar chart here -->
+                    <field name="quantity_loan" type="measure"/> <!-- Add start_date as another row -->
+                    <field name="loan_date" type="row"/>
+                    <field name="book_id" type="row"/>
+                    <field name="status"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Define the action for the bar chart -->
+        <record id="action_os_rentbook_loan_bar_chart" model="ir.actions.act_window">
+            <field name="name">Loan Report</field>
+            <field name="res_model">os.rentbook.loan</field>
+            <field name="view_mode">graph</field>
+            <!-- Specify the Bar Chart view -->
+            <field name="view_id" ref="os_rentbook_loan_bar_chart"/>
+        </record>
+        
+        <menuitem id="menu_os_rentbook_loan_bar_chart" name="Report Rentbook" parent="os_rentbook_report_menu_categ" action="action_os_rentbook_loan_bar_chart" sequence='3'/>
+    </data>
+</odoo>

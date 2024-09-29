@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+        <!-- Tree View untuk Loan -->
+        <record id="view_os_rentbook_loan_tree" model="ir.ui.view">
+            <field name="name">os.rentbook.loan.tree</field>
+            <field name="model">os.rentbook.loan</field>
+            <field name="arch" type="xml">
+                <tree string="Loans">
+                    <field name="member_id"/>
+                    <field name="book_id"/>
+                    <field name="loan_date"/>
+                    <field name="return_date"/>
+                    <field name="status"                    
+                    decoration-info="status == 'draft'"
+                    decoration-danger="status == 'overdue'"
+                    decoration-success="status == 'returned'"
+                    decoration-primary="status == 'borrowed'"                  
+                    widget="badge"
+                />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View untuk Loan -->
+        <record id="view_os_rentbook_loan_form" model="ir.ui.view">
+            <field name="name">os.rentbook.loan.form</field>
+            <field name="model">os.rentbook.loan</field>
+            <field name="arch" type="xml">
+                <form string="Loan">
+                    <header>
+                        <!-- Button untuk status borrowed, hanya terlihat jika status draft -->
+                        <button name="action_borrowed" type="object" string="Borrowed"
+                                class="btn btn-success oe_highlight"
+                                attrs="{'invisible': [('status', '!=', 'draft')]}"/>
+                        
+                        <!-- Button untuk status overdue, hanya terlihat jika status borrowed -->
+                        <button name="action_overdue" type="object" string="Overdue"
+                                confirm="Are you sure the user is overdue?"
+                                class="btn btn-warning oe_highlight"
+                                attrs="{'invisible': [('status', '!=', 'borrowed')]}"/>
+                        
+                        <!-- Button untuk status returned, hanya terlihat jika status borrowed atau overdue -->
+                        <button name="action_returned" type="object" string="Returned"
+                                confirm="Are you sure you want to set this loan as returned?"
+                                class="btn btn-info oe_highlight"
+                                attrs="{'invisible': [('status', 'not in', ['borrowed', 'overdue'])]}"/>
+
+                        <field name="status" widget="statusbar" statusbar_visible="draft,borrowed,overdue,returned"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="member_id" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                            <field name="book_id" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                            <field name="quantity_loan" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                            <field name="loan_date" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                            <field name="return_date" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                            <field name="overdue_days" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                            <field name="late_charge" attrs="{'readonly': [('status', '=', 'returned')]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action untuk Loan -->
+        <record id="action_os_rentbook_loan" model="ir.actions.act_window">
+            <field name="name">Loans</field>
+            <field name="res_model">os.rentbook.loan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_os_rentbook_loan_tree"/>
+        </record>
+
+        <!-- Menu Item untuk Loan -->
+        <menuitem id="os_rentbook_menu_loan" name="Loans" parent="os_rentbook_menu_categ" action="action_os_rentbook_loan"/>
+    </data>
+</odoo>

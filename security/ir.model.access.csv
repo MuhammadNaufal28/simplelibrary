@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_os_rentbook_book,access.os.rentbook.book,model_os_rentbook_book,,1,1,1,1
+access_os_rentbook_genre,access.os.rentbook.genre,model_os_rentbook_genre,,1,1,1,1
+access_os_rentbook_loan,access.os.rentbook.loan,model_os_rentbook_loan,,1,1,1,1
+access_os_rentbook_member,access.os.rentbook.member,model_os_rentbook_member,,1,1,1,1
+access_os_rentbook_reservation,access.os.rentbook.reservation,model_os_rentbook_reservation,,1,1,1,1
+access_os_rentbook_overdue,access.os.rentbook.overdue,model_os_rentbook_overdue,,1,1,1,1

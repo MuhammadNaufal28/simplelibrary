@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <!-- Form View untuk Genre -->
+        <record id="view_os_rentbook_genre_form" model="ir.ui.view">
+            <field name="name">os.rentbook.genre.form</field>
+            <field name="model">os.rentbook.genre</field>
+            <field name="arch" type="xml">
+                <form string="Genre">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View untuk Genre -->
+        <record id="view_os_rentbook_genre_tree" model="ir.ui.view">
+            <field name="name">os.rentbook.genre.tree</field>
+            <field name="model">os.rentbook.genre</field>
+            <field name="arch" type="xml">
+                <tree string="Genres">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action untuk Genre -->
+        <record id="action_os_rentbook_genre" model="ir.actions.act_window">
+            <field name="name">Genres</field>
+            <field name="res_model">os.rentbook.genre</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_os_rentbook_genre_tree"/>
+        </record>
+
+        <!-- Menu Item untuk Genre -->
+        <menuitem id="os_rentbook_menu_genre" name="Genres" parent="os_rentbook_book_menu_categ" action="action_os_rentbook_genre"/>
+    </data>
+</odoo>

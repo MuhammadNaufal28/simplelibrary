@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="os_rentbook_menu_root" name="Library" sequence="1"/>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="os_rentbook_menu_categ" name="Loan" parent="os_rentbook_menu_root" sequence="2"/>
+        <menuitem id="os_rentbook_book_menu_categ" name="Book" parent="os_rentbook_menu_root" sequence="3"/>
+        <menuitem id="os_rentbook_report_menu_categ" name="Report" parent="os_rentbook_menu_root" sequence="4"/>
+    
+    </data>
+    
+
+</odoo>
