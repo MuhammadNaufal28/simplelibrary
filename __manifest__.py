@@ -25,6 +25,8 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'report/report_library.xml',
+        'report/report_library_loan.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/os_rentbook_menu.xml',

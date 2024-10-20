@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="report_libray_loan" model="ir.actions.report">
+        <field name="name">Print Laporan Library Loan</field> 
+        <field name="model">os.rentbook.loan</field>    
+        <field name="report_type">qweb-pdf</field>  
+        <field name="report_name">rent_book.report_loan_template_pdf</field>  
+        <field name="report_file">rent_book.report_loan_template_pdf</field>  
+        <field name="binding_model_id" ref="model_os_rentbook_loan"/>
+        <field name="binding_type">report</field>            
+    </record>
+</odoo>
